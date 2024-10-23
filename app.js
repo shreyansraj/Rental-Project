@@ -69,11 +69,11 @@ app.use("/listings/:id/reviews", reviewsRoutes);
 app.use("/", userRoutes);
 
 
-// Home Route
-app.get("/", (req, res) => {
-    req.session.username = "Shreyans";
-    res.send("Session is now set!");
-});
+// // Home Route
+// app.get("/", (req, res) => {
+//     req.session.username = "Shreyans";
+//     res.send("Session is now set!");
+// });
 
 // Error handling
 app.use((err, req, res, next) => {
