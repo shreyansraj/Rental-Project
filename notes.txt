@@ -1,0 +1,105 @@
+----------Miscellaneous------------
+
+Express Router : Express Routers are a way to organize your express application such that our primary app.js file does not become bloated.
+
+     const router = express.Router() // create new router object
+
+-------------Cookies/Web Cookies/HTTP Cookies----------------
+Cookies are small pieces of data stored on the client (browser) side, and they can be used to save user information between page requests.
+Cookies are ideal for small, non-sensitive information such as:
+
+User preferences (like language or theme)
+Keeping users logged in by storing authentication tokens
+Tracking visits or actions on a website
+
+
+HTTP Cookies are small block of data created by a web server while a user is browsing a website and placed on the user's computer or other 
+device by the user's web browser.
+
+Function of Cookies : 
+    Session management - store unique session identifier
+                         To keep track of which user is assigned to which shoping cart 
+
+    Personalization -  remember information about the user in order to relevant content over time to that user
+
+    Tracking - track users web browsing habits
+
+Kisi website pe koi ek bar darkmode on krne kr dene k bad koi aur page pe gte hai to wha v dark mode he hota hai becoz of Cookies
+
+Signed Cookies finds that if our cookies are tampered or not.
+
+-------------------State-------------------
+
+Stateful protocol : Stateful protocol requires server to save the status and session information
+ eg... file transfer protocol
+
+ Stateless protocol : does not require the server to reation the server information or status
+ eg... http 
+
+ Understand with transactin one with cash whihc keeps no record and other with UPI that keeps record
+
+ ---------------Express session-----------
+ An attempt to make our session Stateful.
+
+Key Differences Between Cookies and Sessions:
+-- Cookies store data on the client side (browser), while sessions store data on the server side.
+-- Sessions use a session ID stored in a cookie to link the client to the session data on the server.
+-- Sessions are more secure for sensitive information since the data is stored server-side
+
+
+Express can help save small pieces of information in the browser using cookies, and it can also manage sessions to keep track of user interactions over time.
+
+Cookies are good for client-side data storage, but they're not suitable for storing sensitive information like passwords or session data.
+
+----------- Sessions:-------------
+Sessions provide a more secure way to store information about a user for the duration of their interaction with the website.
+The session data is stored server-side, while a session ID is stored in a cookie on the client-side. 
+This way, sensitive data doesn't reside in the browser, making sessions more secure than cookies for storing confidential data.
+
+With sessions, you can store:
+
+User login states
+Shopping cart contents
+Data that should persist between pages for a single user
+
+-------------connect-flash----------------------
+connect-flash is a middleware for Express that allows you to store temporary messages in the session and display them to the 
+user on the next page load. 
+These messages, commonly referred to as "flash messages," are typically used for user notifications, 
+
+such as:
+-- Success messages after completing an action (e.g., "User created successfully")
+-- Error messages when an operation fails (e.g., "Invalid login credentials")
+-- Informational messages (e.g., "Please login to access this page")
+-- Flash messages are temporary and will disappear after they have been displayed to the user. This is useful for providing feedback about actions, like form submissions or redirects.
+
+----------Authentication and Authorization------------------
+
+Authentication:
+What it is: The process of verifying a user's identity.
+How it works: Typically involves checking credentials like a username and password. Other methods include multi-factor authentication (MFA), biometrics, or tokens.
+Purpose: Ensures that the person accessing the system is who they claim to be.
+Example: Logging into a website using a password.
+
+Authorization:
+What it is: The process of determining what resources or actions a user is allowed to access after authentication.
+How it works: Based on the user's role or permissions, the system decides what data or functionalities they are allowed to access.
+Purpose: Ensures that authenticated users only access what they're permitted to.
+Example: After logging in, a regular user can view their profile, but only an admin can delete other users' accounts.
+
+-------------Storing password->hashing->salting------------------------
+
+Hashing:
+What it is: A one-way cryptographic transformation of a password into a fixed-size string (called a hash). Once hashed, the password cannot be directly reversed.
+Purpose: Ensures passwords are not stored in plaintext. Even if the database is compromised, the original passwords are not exposed.
+Example: password123 → 5f4dcc3b5aa765d61d8327deb882cf99 (MD5 hash)
+
+Salting:
+What it is: Adding a unique, random string (salt) to each password before hashing it.
+Purpose: Prevents rainbow table attacks, where precomputed hashes are used to crack passwords. Even if two users have the same password, their hashed values will be different because of unique salts.
+
+Process:
+Salt: Generate a random salt (e.g., xyz123).
+Hash + Salt: Combine the password and salt (password123xyz123), then hash them together.
+Store: Save both the salt and the hash in the database.
+
